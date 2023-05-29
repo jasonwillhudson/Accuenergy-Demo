@@ -1,0 +1,66 @@
+@import './base.css';
+
+/*Text Style*/
+h3{
+  font-weight: 700;
+}
+
+p{
+  color: rgb(72, 72, 72);
+  margin: 8px 0;
+}
+
+strong{
+  font-weight: 700;
+  color: rgb(46, 46, 46);
+}
+
+/*Component Style*/
+input, button{
+  padding: 10px;
+}
+
+input[type="text"]{
+  margin-right: 5px;
+  width: 100%;
+}
+
+input[type="checkbox"]{
+  margin-right: 10px;
+}
+
+li{
+  list-style:none;
+}
+
+ul{
+  padding: 0;
+}
+
+button{
+  color:aliceblue;
+  background-color: rgb(25, 25, 25);
+  border: 1px solid rgb(25, 25, 25);
+  transition: .2s;
+}
+
+button:hover{
+  color: black;
+  background-color: white;
+  transition: .2s;
+  cursor: pointer;
+}
+
+/* Layout */
+.flex{
+  display: flex;
+  width: 100%;
+}
+
+.left{
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  padding-right: 40px;
+}
+
