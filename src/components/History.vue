@@ -1,7 +1,8 @@
 <template>
     <div>
-        <h3>Searched History</h3>
-
+        <h3 style="display: inline;">Searched History</h3>
+        <!-- Delete button -->
+        <button style="margin-left: 15px; margin-bottom: 10px;" @click="deleteSelectedLocations">Delete Selected</button>
         <!-- List -->
         <ul v-if="paginatedLocations.length !== 0">
             <li v-for="location in paginatedLocations" :key="location.name">
@@ -11,8 +12,7 @@
             </li>
         </ul>
         <p v-else>No search has been done yet</p>
-        <br />
-
+        
         <!-- Pagination -->
         <div class="pagination">
             <button @click="goToPage(currentPage - 1)" :disabled="currentPage === 1">&lt; Previous</button>
@@ -20,10 +20,6 @@
                 :class="{ active: page === currentPage }">{{ page }}</button>
             <button @click="goToPage(currentPage + 1)" :disabled="currentPage === totalPages">Next ></button>
         </div>
-
-        <!-- Delete button -->
-        <br />
-        <button @click="deleteSelectedLocations">Delete Selected</button>
     </div>
 </template>
   
