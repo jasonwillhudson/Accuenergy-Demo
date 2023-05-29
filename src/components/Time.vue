@@ -1,9 +1,8 @@
 <template>
     <div v-if="location != null && time != null">
-        <p><strong>Address:</strong> {{ location.name }}</p>
-        <p><strong>Latitude:</strong> {{ location.latitude }}</p>
-        <p><strong>Longitude:</strong> {{ location.longitude }}</p>
-        <p><strong>Current Time:</strong> {{ time.toLocaleTimeString() }}</p>
+        <p><strong>Address: </strong> {{ location.name }}</p>
+        <p><strong>Time Zone: </strong> {{ timeZone }}</p>
+        <p><strong>Current Time: </strong> {{ time.toLocaleTimeString() }}</p>
     </div>
     <div v-else>
         <p>No search has done yet</p>
@@ -17,7 +16,8 @@ export default {
     data() {
         return {
             time: null,
-            interval: null
+            interval: null,
+            timeZone: null
         };
     },
 
@@ -43,7 +43,9 @@ export default {
                 );
                 const data = await response.json();
                 const { datetime } = data;
-                this.time = new Date(datetime);
+                
+                this.timeZone = data.timezone; //set time zone
+                this.time = new Date(datetime); //set time
                 this.interval = setInterval(this.updateTime, 1000); // Update time every second
             } catch (error) {
                 console.error('Error fetching time:', error);
@@ -51,9 +53,9 @@ export default {
             }
         },
 
+
         //Increment time by 1 second every second
         updateTime() {
-
             if (this.time !== null) {
                 const currentTime = new Date(this.time);
                 currentTime.setSeconds(currentTime.getSeconds() + 1);
