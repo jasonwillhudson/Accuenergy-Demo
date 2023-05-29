@@ -2,14 +2,14 @@
   <div id="app">
     <HomeView />
   </div>
- </template>
+</template>
 
 <script>
 import HomeView from './views/HomeView.vue'
 export default {
- name: 'App',
- components: {
-   HomeView
- }
+  name: 'App',
+  components: {
+    HomeView
+  }
 }
 </script>
